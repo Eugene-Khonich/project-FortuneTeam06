@@ -4,6 +4,7 @@ const userSchema = new Schema(
   {
     name: {
       type: String,
+      default: '',
     },
     email: {
       type: String,
@@ -20,8 +21,8 @@ const userSchema = new Schema(
       default: 'female',
     },
     dailyNorm: {
-      type: String,
-      default: '1500',
+      type: Number,
+      default: 1500,
     },
     avatarUrl: {
       type: String,
@@ -32,5 +33,11 @@ const userSchema = new Schema(
     versionKey: false,
   },
 );
+
+userSchema.methods.toJSON = function () {
+  const obj = this.toObject();
+  delete obj.password;
+  return obj;
+};
 
 export const User = model('user', userSchema);
