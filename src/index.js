@@ -1,6 +1,6 @@
 import { setupServer } from './server.js';
 
-const boostrap = () => {
+const boostrap = async () => {
   setupServer();
 };
 
