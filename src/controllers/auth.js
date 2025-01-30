@@ -1,6 +1,6 @@
 import * as authService from '../services/authService.js';
 
-export const regiserController = async (req, res) => {
+export const registerController = async (req, res) => {
   const data = await authService.registerUser(req.body);
 
   res.status(201).json({
