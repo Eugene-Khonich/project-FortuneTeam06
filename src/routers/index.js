@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import authRouter from './auth.js';
-import userRouter from './contacts.js';
+import userRouter from './user.js';
 import waterRouter from './water.js';
 
 const router = Router();
