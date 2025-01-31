@@ -2,17 +2,12 @@ import UserCollection from '../db/models/User.js';
 import SessionCollection from '../db/models/Session.js';
 import createHttpError from 'http-errors';
 import bcrypt from 'bcrypt';
-import {
-  accessTokenLifetime,
-  refreshTokenLifetime,
-} from '../constants/users.js';
+import { accessTokenLifetime } from '../constants/users.js';
 import { randomBytes } from 'crypto';
 
 const createSessionData = () => ({
   accessToken: randomBytes(30).toString('base64'),
-  refreshToken: randomBytes(30).toString('base64'),
   accessTokenValidUntil: Date.now() + accessTokenLifetime,
-  refreshTokenValidUntil: Date.now() + refreshTokenLifetime,
 });
 
 export const registerUser = async (payload) => {
