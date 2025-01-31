@@ -10,8 +10,8 @@ export const getUserById = async (userId) => {
   return user;
 };
 
-export const updateUser = async ({ _id: userId }, payload) => {
-  const rawResult = await User.findByIdAndUpdate(userId, payload, {
+export const updateUser = async (userId, payload) => {
+  const rawResult = await User.findByIdAndUpdate({ _id: userId }, payload, {
     new: true,
     // upsert: true,
     includeResultMetadata: true,
