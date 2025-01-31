@@ -7,16 +7,19 @@ const waterSchema = new Schema(
       required: true,
       ref: 'User',
     },
-    volume: {
-      type: String,
+    drinkWater: {
+      type: Number,
       required: true,
+      default: 0,
     },
-    date: {
+    drinkTime: {
       type: String,
       required: true,
+      default: () => Date().toString().split('.')[0],
     },
   },
   {
+    timestamps: true,
     versionKey: false,
   },
 );
