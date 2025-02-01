@@ -1,9 +1,10 @@
+import { accessTokenLifetime } from '../constants/users.js';
 import * as authService from '../services/authService.js';
 
 const setupSession = (res, session) => {
   res.cookie('sessionId', session.id, {
     httpOnly: true,
-    expires: session.refreshTokenValidUntil,
+    expires: new Date(Date.now() + accessTokenLifetime),
   });
 };
 
@@ -35,7 +36,7 @@ export const logoutUserController = async (req, res) => {
   if (req.cookies.sessionId) {
     await authService.logoutUser(req.cookies.sessionId);
   } else if (req.user && req.user.id) {
-    await authService.logoutUserByUserId(req.user.id);
+    await authService.logoutUserById(req.user.id);
   }
 
   res.clearCookie('sessionId');

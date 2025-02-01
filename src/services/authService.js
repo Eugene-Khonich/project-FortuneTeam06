@@ -15,7 +15,7 @@ export const registerUser = async (payload) => {
 
   const user = await UserCollection.findOne({ email });
   if (user) {
-    throw createHttpError(409, 'Email in use');
+    throw createHttpError(409, 'Email in use!');
   }
 
   const hashPassword = await bcrypt.hash(password, 10);
@@ -33,13 +33,13 @@ export const registerUser = async (payload) => {
 export const loginUser = async ({ email, password }) => {
   const user = await UserCollection.findOne({ email });
   if (!user) {
-    throw createHttpError(401, 'Email or password invalid');
+    throw createHttpError(404, 'User not found!');
   }
 
   const passwordCompare = await bcrypt.compare(password, user.password);
 
   if (!passwordCompare) {
-    throw createHttpError(401, 'Email or password invalid');
+    throw createHttpError(401, 'Wrong password!');
   }
   await SessionCollection.deleteOne({ userId: user._id });
   const sessionData = createSessionData();
@@ -52,4 +52,8 @@ export const loginUser = async ({ email, password }) => {
 
 export const logoutUser = async (sessionId) => {
   await SessionCollection.deleteOne({ _id: sessionId });
+};
+
+export const logoutUserById = async (userId) => {
+  await SessionCollection.deleteOne({ userId });
 };
