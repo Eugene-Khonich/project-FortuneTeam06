@@ -5,7 +5,7 @@ import {
   getMonthWater,
   getWaterByDate,
   updateWater,
-} from '../services/water';
+} from '../services/water.js';
 
 export const addWaterController = async (req, res, next) => {
   const drinkedWater = req.body.drinkedWater;
