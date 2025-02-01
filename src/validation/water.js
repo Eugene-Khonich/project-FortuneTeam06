@@ -1,9 +1,11 @@
 import Joi from 'joi';
 
 export const addWaterSchema = Joi.object({
-  drinkedWater: Joi.number().required().messages({
+  drinkedWater: Joi.number().min(1).max(5000).required().messages({
     'number.base': 'Must be a number',
     'any.required': 'required field',
+    'number.min': 'Must be greater than or equal to 1',
+    'number.max': 'Must be less than or equal to 5000',
   }),
 
   drinkTime: Joi.string()
@@ -17,8 +19,10 @@ export const addWaterSchema = Joi.object({
 });
 
 export const updateWaterSchema = Joi.object({
-  drinkedWater: Joi.number().messages({
+  drinkedWater: Joi.number().min(1).max(5000).messages({
     'number.base': 'Must be a number',
+    'number.min': 'Must be greater than or equal to 1',
+    'number.max': 'Must be less than or equal to 5000',
   }),
 
   drinkTime: Joi.string()

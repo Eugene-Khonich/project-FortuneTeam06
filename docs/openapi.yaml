@@ -1,0 +1,21 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Water Tracker app
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  description: Documentation of Water Trecker app
+tags:
+  - name: Water Trecker
+    description: Water Tracker operations
+  - name: Auth
+    description: Auth operations
+servers:
+  - url: https://nodejs-hw-mongodb-final.onrender.com
+  - url: http://localhost:3000
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,15 @@
+description: 'Forbidden error'
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - message
+        - status
+      properties:
+        message:
+          type: string
+          example: 'Forbidden error'
+        status:
+          type: integer
+          example: 403

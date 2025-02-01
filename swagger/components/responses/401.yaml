@@ -1,0 +1,22 @@
+description: Unauthorized error
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - message
+        - status
+        - data
+      properties:
+        message:
+          type: string
+          example: 'Unauthorized'
+        status:
+          type: integer
+          example: 401
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+              example: 'Unauthorized'

@@ -15,7 +15,7 @@ const waterSchema = new Schema(
     drinkTime: {
       type: String,
       required: true,
-      default: () => Date().toString().split('.')[0],
+      default: () => new Date().toISOString().slice(0, 16).replace('T', ' '),
     },
   },
   {
