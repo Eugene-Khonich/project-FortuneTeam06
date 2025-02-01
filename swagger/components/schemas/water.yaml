@@ -1,0 +1,23 @@
+type: object
+required:
+  - userId
+  - drinkedWater
+  - drinkTime
+properties:
+  _id:
+    description: 'Water ID'
+    type: string
+    example: 5f64a2b4d6f3b4b4b4b4b4b4
+  userId:
+    description: 'User ID who managed the water'
+    type: string
+    example: 5f64a2b4d6f3b4b4b4b4b4b4
+  drinkedWater:
+    description: 'Amount of water drank'
+    type: number
+    example: 1500
+  drinkTime:
+    description: 'Time when the water was drank'
+    type: string
+    format: date-time
+    example: 2025-02-01 17:19
