@@ -50,6 +50,6 @@ export const loginUser = async ({ email, password }) => {
   });
 };
 
-export const logoutUser = async (accessToken) => {
-  await SessionCollection.deleteOne({ accessToken });
+export const logoutUser = async (sessionId) => {
+  await SessionCollection.deleteOne({ _id: sessionId });
 };
