@@ -1,0 +1,34 @@
+tags:
+  - Water
+summary: 'Get water by month'
+operationId: getMonthWater
+description: 'Get user water by month'
+security:
+  - bearerAuth: []
+parameters:
+  - in: query
+    name: yearMonth
+    schema:
+      type: integer
+    example: 2021-12
+responses:
+  '200':
+    description: 'Water by month found successfully'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - data
+          properties:
+            data:
+              type: object
+              properties:
+                month:
+                  type: string
+                  example: '2021-12'
+                water:
+                  type: integer
+                  example: 1000
+  '401':
+    $ref: '../../../components/responses/401.yaml'

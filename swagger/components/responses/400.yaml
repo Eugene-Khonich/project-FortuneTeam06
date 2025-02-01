@@ -1,9 +1,15 @@
-description: 'Bad request'
+description: 'Bad request error'
 content:
   application/json:
     schema:
       type: object
+      required:
+        - message
+        - status
       properties:
         message:
           type: string
-          example: 'Invalid request'
+          example: 'Bad request'
+        status:
+          type: integer
+          example: 400

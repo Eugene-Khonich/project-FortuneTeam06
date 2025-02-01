@@ -1,0 +1,15 @@
+descriptiom: 'Internal server error'
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - message
+        - status
+      properties:
+        message:
+          type: string
+          example: 'Internal server error'
+        status:
+          type: integer
+          example: 500
