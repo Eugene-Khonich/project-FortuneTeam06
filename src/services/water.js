@@ -1,4 +1,4 @@
-import Water from '../models/water.js';
+import Water from '../db/models/Water.js';
 
 export const addWater = async (payload) => {
   await Water.create(payload);

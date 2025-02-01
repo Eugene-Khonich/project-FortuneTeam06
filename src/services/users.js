@@ -1,5 +1,5 @@
 import createHttpError from 'http-errors';
-import { User } from '../db/models/User.js';
+import User from '../db/models/User.js';
 import { HTTP_STATUSES } from '../constants/index.js';
 
 export const getUserById = async (userId) => {

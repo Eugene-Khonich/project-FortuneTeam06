@@ -1,7 +1,7 @@
 import createHttpError from 'http-errors';
 import { HTTP_STATUSES } from '../constants/index.js';
-import { Session } from '../db/models/Session.js';
-import { User } from '../db/models/User.js';
+import Session from '../db/models/Session.js';
+import User from '../db/models/User.js';
 
 const { NOT_FOUND, UNAUTHORIZED } = HTTP_STATUSES;
 

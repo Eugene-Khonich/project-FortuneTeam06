@@ -1,5 +1,5 @@
 import createHttpError from 'http-errors';
-import { addWater } from '../services/water.ls';
+import { addWater } from '../services/water.js';
 import {
   deleteWater,
   getMonthWater,
