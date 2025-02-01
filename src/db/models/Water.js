@@ -7,7 +7,7 @@ const waterSchema = new Schema(
       required: true,
       ref: 'User',
     },
-    drinkWater: {
+    drinkedWater: {
       type: Number,
       required: true,
       default: 0,
@@ -24,4 +24,6 @@ const waterSchema = new Schema(
   },
 );
 
-export const Water = model('water', waterSchema);
+const WaterCollection = model('water', waterSchema);
+
+export default WaterCollection;

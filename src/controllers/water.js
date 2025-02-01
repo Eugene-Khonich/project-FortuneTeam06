@@ -1,0 +1,77 @@
+import createHttpError from 'http-errors';
+import { addWater } from '../services/water.ls';
+import {
+  deleteWater,
+  getMonthWater,
+  getWaterByDate,
+  updateWater,
+} from '../services/water.js';
+
+export const addWaterController = async (req, res, next) => {
+  const drinkedWater = req.body.drinkedWater;
+  const drinkTime = req.body.drinkTime;
+  const userId = req.user._id;
+
+  const water = await addWater({ userId, drinkedWater, drinkTime });
+
+  res.status(201).json({
+    status: 201,
+    message: 'Water added successfully',
+    data: water,
+  });
+};
+
+export const updateWaterController = async (req, res, next) => {
+  const { waterId } = req.params;
+  const userId = req.user._id;
+  const drinkedWater = req.body.drinkedWater;
+  const drinkTime = req.body.drinkTime;
+  const water = await updateWater(waterId, userId, { drinkedWater, drinkTime });
+  if (!water) {
+    return next(createHttpError(404, 'Water not found'));
+  }
+  const status = water.isNew ? 201 : 200;
+  res.status(status).json({
+    status,
+    message: 'Water updated successfully',
+    data: water,
+  });
+};
+
+export const deleteWaterController = async (req, res, next) => {
+  const userId = req.user._id;
+  const { waterId } = req.params;
+  const water = await deleteWater(waterId, userId);
+  if (!water) {
+    return next(createHttpError(404, 'Water not found'));
+  }
+  res.status(204).send();
+};
+
+export const getWaterByDateController = async (req, res, next) => {
+  const userId = req.user._id;
+  const { date } = req.params;
+  const water = await getWaterByDate(date, userId);
+  if (!water) {
+    return next(createHttpError(404, `Water by date ${date} not found`));
+  }
+  res.status(200).json({
+    status: 200,
+    message: 'Water by date found successfully',
+    date: water,
+  });
+};
+
+export const getMonthWaterController = async (req, res, next) => {
+  const userId = req.user._id;
+  const { yearMonth } = req.params;
+  const water = await getMonthWater(yearMonth, userId);
+  if (!water) {
+    return next(createHttpError(404, `Water by month ${yearMonth} not found`));
+  }
+  res.status(200).json({
+    status: 200,
+    message: 'Water by month found successfully',
+    month: water,
+  });
+};
