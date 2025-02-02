@@ -1,5 +1,7 @@
+import createHttpError from 'http-errors';
 import { accessTokenLifetime } from '../constants/users.js';
 import * as authService from '../services/authService.js';
+import SessionCollection from '../db/models/Session.js';
 
 const setupSession = (res, session) => {
   res.cookie('sessionId', session._id, {
@@ -9,12 +11,18 @@ const setupSession = (res, session) => {
 };
 
 export const registerController = async (req, res) => {
-  const data = await authService.registerUser(req.body);
+  const user = await authService.registerUser(req.body);
+  const session = await authService.loginUser(req.body);
+
+  setupSession(res, session);
 
   res.json({
     status: 201,
     message: 'Successfully registered a user',
-    data,
+    data: {
+      user,
+      accessToken: session.accessToken,
+    },
   });
 };
 
@@ -32,11 +40,25 @@ export const loginController = async (req, res) => {
   });
 };
 
+// export const logoutUserController = async (req, res) => {
+//   if (req.cookies.sessionId) {
+//     await authService.logoutUser(req.cookies.sessionId);
+//   }
+
+//   res.clearCookie('sessionId');
+//   res.status(204).send();
+// };
+
 export const logoutUserController = async (req, res) => {
-  if (req.cookies.sessionId) {
-    await authService.logoutUser(req.cookies.sessionId);
+  const sessionId = req.cookies.sessionId;
+
+  if (!sessionId) {
+    throw createHttpError(401, 'Unauthorized');
   }
 
+  await authService.logoutUser(sessionId);
+
   res.clearCookie('sessionId');
+
   res.status(204).send();
 };
