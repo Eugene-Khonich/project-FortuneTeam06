@@ -15,9 +15,11 @@ import {
   monthSchema,
   updateWaterSchema,
 } from '../validation/water.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
 const router = Router();
 
+router.use(authenticate);
 router.post('/', ctrlWrapper(addWaterController), validateBody(addWaterSchema));
 router.patch(
   '/:waterId',

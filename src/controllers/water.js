@@ -9,11 +9,9 @@ import {
 
 export const addWaterController = async (req, res, next) => {
   const drinkedWater = req.body.drinkedWater;
-  const drinkTime = req.body.drinkTime;
   const userId = req.user._id;
 
-  const water = await addWater({ userId, drinkedWater, drinkTime });
-
+  const water = await addWater({ userId, drinkedWater });
   res.status(201).json({
     status: 201,
     message: 'Water added successfully',
@@ -58,7 +56,7 @@ export const getWaterByDateController = async (req, res, next) => {
   res.status(200).json({
     status: 200,
     message: 'Water by date found successfully',
-    date: water,
+    data: water,
   });
 };
 
@@ -69,9 +67,10 @@ export const getMonthWaterController = async (req, res, next) => {
   if (!water) {
     return next(createHttpError(404, `Water by month ${yearMonth} not found`));
   }
+  console.log(water);
   res.status(200).json({
     status: 200,
     message: 'Water by month found successfully',
-    month: water,
+    data: water,
   });
 };

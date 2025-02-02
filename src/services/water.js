@@ -1,7 +1,8 @@
 import Water from '../db/models/Water.js';
 
 export const addWater = async (payload) => {
-  await Water.create(payload);
+  const water = await Water.create(payload);
+  return water;
 };
 
 export const updateWater = async (waterId, userId, payload, options = {}) => {
@@ -26,8 +27,8 @@ export const deleteWater = async (waterId, userId) => {
 };
 
 export const getWaterByDate = async (date, userId) => {
-  const startOfDay = `${date}T00:00:00`;
-  const endOfDay = `${date}T23:59:59`;
+  const startOfDay = `${date} 00:00`;
+  const endOfDay = `${date} 23:59`;
   const water = await Water.find({
     userId,
     drinkTime: {
@@ -39,8 +40,8 @@ export const getWaterByDate = async (date, userId) => {
 };
 
 export const getMonthWater = async (yearMonth, userId) => {
-  const startOfMonth = `${yearMonth}-01T00:00:00`;
-  const endOfMonth = `${yearMonth}-31T23:59:59`;
+  const startOfMonth = `${yearMonth}-01 00:00`;
+  const endOfMonth = `${yearMonth}-31 23:59`;
   const water = await Water.find({
     userId,
     drinkTime: {
