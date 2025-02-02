@@ -7,10 +7,12 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   description: Documentation of Water Trecker app
 tags:
-  - name: Water Trecker
-    description: Water Tracker operations
+  - name: Users
+    description: User operations
   - name: Auth
     description: Auth operations
+  - name: Water Trecker
+    description: Water Tracker operations
 servers:
   - url: https://water-tracker-x26o.onrender.com
   - url: http://localhost:3000
