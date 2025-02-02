@@ -15,7 +15,7 @@ properties:
   drinkedWater:
     description: 'Amount of water drank'
     type: number
-    example: 1500
+    example: 200
   drinkTime:
     description: 'Time when the water was drank'
     type: string

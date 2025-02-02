@@ -1,0 +1,38 @@
+type: object
+required:
+  - email
+  - password
+properties:
+  name:
+    description: "User's name"
+    type: string
+    default: 'Example name'
+    example: 'John Doe'
+  email:
+    description: "User's email"
+    type: string
+    format: email
+    maxLength: 320
+    example: 'example@gmail.com'
+  password:
+    description: "User's password"
+    type: string
+    minLength: 8
+    maxLength: 128
+    example: 'securePassword123'
+  gender:
+    description: "User's gender"
+    type: string
+    enum: ['male', 'female']
+    default: 'female'
+    example: 'male'
+  dailyNorm:
+    description: "User's daily norm (e.g., step count)"
+    type: number
+    default: 15000
+    example: 10000
+  avatarUrl:
+    description: "URL to user's avatar"
+    type: string
+    format: uri
+    example: 'https://example.com/avatar.jpg'
