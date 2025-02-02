@@ -11,7 +11,7 @@ tags:
     description: User operations
   - name: Auth
     description: Auth operations
-  - name: Water Trecker
+  - name: Water
     description: Water Tracker operations
 servers:
   - url: https://water-tracker-x26o.onrender.com

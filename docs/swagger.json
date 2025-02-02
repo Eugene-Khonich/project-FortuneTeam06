@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://nodejs-hw-mongodb-final.onrender.com"
+      "url": "https://water-tracker-x26o.onrender.com"
     },
     {
       "url": "http://localhost:3000"
@@ -19,12 +19,16 @@
   ],
   "tags": [
     {
-      "name": "Water Trecker",
-      "description": "Water Tracker operations"
+      "name": "Users",
+      "description": "User operations"
     },
     {
       "name": "Auth",
       "description": "Auth operations"
+    },
+    {
+      "name": "Water",
+      "description": "Water Tracker operations"
     }
   ],
   "paths": {
