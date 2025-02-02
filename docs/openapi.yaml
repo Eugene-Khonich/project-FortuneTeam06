@@ -12,7 +12,7 @@ tags:
   - name: Auth
     description: Auth operations
 servers:
-  - url: https://nodejs-hw-mongodb-final.onrender.com
+  - url: https://water-tracker-x26o.onrender.com
   - url: http://localhost:3000
 paths:
   /auth/register:
