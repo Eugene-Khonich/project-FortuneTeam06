@@ -11,13 +11,15 @@ export const updateWater = async (waterId, userId, payload, options = {}) => {
     payload,
     {
       new: true,
-      includeResultMetadata: true,
       ...options,
     },
   );
+  if (!water) {
+    return null;
+  }
   return {
-    data: water.value,
-    isNew: Boolean(water.lastErrorObject?.upserted),
+    data: water,
+    isNew: Boolean(options.upsert && !water._id),
   };
 };
 

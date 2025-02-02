@@ -23,8 +23,7 @@ export const updateWaterController = async (req, res, next) => {
   const { waterId } = req.params;
   const userId = req.user._id;
   const drinkedWater = req.body.drinkedWater;
-  const drinkTime = req.body.drinkTime;
-  const water = await updateWater(waterId, userId, { drinkedWater, drinkTime });
+  const water = await updateWater(waterId, userId, { drinkedWater });
   if (!water) {
     return next(createHttpError(404, 'Water not found'));
   }

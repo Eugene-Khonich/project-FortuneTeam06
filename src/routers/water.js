@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { validateBody } from '../middlewares/validateBody.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
-import { isValidId } from '../middlewares/isValidId.js';
 import {
   addWaterController,
   deleteWaterController,
@@ -23,11 +22,10 @@ router.use(authenticate);
 router.post('/', ctrlWrapper(addWaterController), validateBody(addWaterSchema));
 router.patch(
   '/:waterId',
-  isValidId,
   ctrlWrapper(updateWaterController),
   validateBody(updateWaterSchema),
 );
-router.delete('/:waterId', ctrlWrapper(deleteWaterController), isValidId);
+router.delete('/:waterId', ctrlWrapper(deleteWaterController));
 router.get(
   '/day/:date',
   ctrlWrapper(getWaterByDateController),
