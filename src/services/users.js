@@ -29,7 +29,3 @@ export const updateUser = async (userId, payload) => {
     isNew,
   };
 };
-
-export const countUsers = async () => {
-  return UserCollection.countDocuments();
-};

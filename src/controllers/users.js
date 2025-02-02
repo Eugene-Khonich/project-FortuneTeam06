@@ -42,15 +42,3 @@ export const patchUserController = async (req, res, next) => {
     data: result.user,
   });
 };
-
-export const countUsersController = async (req, res) => {
-  const usersCount = await countUsers();
-
-  res.status(200).json({
-    status: 200,
-    message: 'Successfully found count users!',
-    data: {
-      usersCount,
-    },
-  });
-};

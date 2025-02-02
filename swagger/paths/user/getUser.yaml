@@ -25,7 +25,7 @@ responses:
                 user:
                   type: object
                   properties:
-                    id:
+                    _id:
                       type: string
                       description: User's unique identifier
                       example: 607f1f77bcf86cd799439011
