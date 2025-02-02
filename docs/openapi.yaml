@@ -24,14 +24,11 @@ paths:
   /auth/logout:
     post:
       $ref: ../swagger/paths/auth/logout.yaml
-  # /users/user-profile:
-  #   get:
-  #     $ref: '../swagger/paths/user/getUser.yaml'
-  #   patch:
-  #     $ref: '../swagger/paths/user/patchUser.yaml'
-  # /users/all-users:
-  #   get:
-  #     $ref: '../swagger/paths/user/getAllUser.yaml'
+  /users/user-profile:
+    get:
+      $ref: '../swagger/paths/user/getUser.yaml'
+    patch:
+      $ref: '../swagger/paths/user/patchUser.yaml'
   /water:
     post:
       $ref: ../swagger/paths/water/post.yaml
