@@ -7,6 +7,7 @@ import { updateUserSchema } from '../validation/users.js';
 import {
   getUserByIdController,
   patchUserController,
+  countUsersController,
 } from '../controllers/users.js';
 
 const router = Router();
@@ -21,5 +22,7 @@ router.patch(
   validateBody(updateUserSchema),
   ctrlWrapper(patchUserController),
 );
+
+router.get('/count', ctrlWrapper(countUsersController));
 
 export default router;
