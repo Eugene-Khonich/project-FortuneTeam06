@@ -4,7 +4,7 @@ summary: 'Add a new water record'
 operationId: addWater
 description: 'Add a new water record to the database'
 security:
-  - BearerAuth: []
+  - bearerAuth: []
 requestBody:
   content:
     application/json:

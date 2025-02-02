@@ -14,6 +14,38 @@ tags:
 servers:
   - url: https://nodejs-hw-mongodb-final.onrender.com
   - url: http://localhost:3000
+paths:
+  /auth/register:
+    post:
+      $ref: ../swagger/paths/auth/register.yaml
+  /auth/login:
+    post:
+      $ref: ../swagger/paths/auth/login.yaml
+  /auth/logout:
+    post:
+      $ref: ../swagger/paths/auth/logout.yaml
+  # /users/user-profile:
+  #   get:
+  #     $ref: '../swagger/paths/user/getUser.yaml'
+  #   patch:
+  #     $ref: '../swagger/paths/user/patchUser.yaml'
+  # /users/all-users:
+  #   get:
+  #     $ref: '../swagger/paths/user/getAllUser.yaml'
+  /water:
+    post:
+      $ref: ../swagger/paths/water/post.yaml
+  /water/day:
+    get:
+      $ref: ../swagger/paths/water/daily/get.yaml
+  /water/month:
+    get:
+      $ref: ../swagger/paths/water/month/get.yaml
+  /water/{id}:
+    patch:
+      $ref: ../swagger/paths/water/{id}/patch.yaml
+    delete:
+      $ref: ../swagger/paths/water/{id}/delete.yaml
 components:
   securitySchemes:
     bearerAuth:
