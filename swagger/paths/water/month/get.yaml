@@ -6,10 +6,10 @@ description: 'Get user water by month'
 security:
   - bearerAuth: []
 parameters:
-  - in: query
+  - in: path
     name: yearMonth
     schema:
-      type: integer
+      pattern: '(/^\d{4}-\d{2}$/)'
     example: 2021-12
 responses:
   '200':

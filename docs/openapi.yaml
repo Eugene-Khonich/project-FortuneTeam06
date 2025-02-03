@@ -34,10 +34,10 @@ paths:
   /water:
     post:
       $ref: ../swagger/paths/water/post.yaml
-  /water/day:
+  /water/day/{date}:
     get:
       $ref: ../swagger/paths/water/daily/get.yaml
-  /water/month:
+  /water/month/{yearMonth}:
     get:
       $ref: ../swagger/paths/water/month/get.yaml
   /water/{id}:
