@@ -9,7 +9,6 @@ parameters:
   - in: query
     name: data
     schema:
-      type: integer
       pattern: '(/^\d{4}-\d{2}-\d{2}$/)'
     example: 2021-01-01
 responses:
