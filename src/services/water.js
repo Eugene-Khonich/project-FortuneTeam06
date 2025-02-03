@@ -44,6 +44,9 @@ export const getWaterByDate = async (date, userId) => {
 export const getMonthWater = async (yearMonth, userId) => {
   const startOfMonth = `${yearMonth}-01 00:00`;
   const endOfMonth = `${yearMonth}-31 23:59`;
+  console.log(
+    `Querying water data from ${startOfMonth} to ${endOfMonth} for user ${userId}`,
+  );
   const water = await Water.find({
     userId,
     drinkTime: {

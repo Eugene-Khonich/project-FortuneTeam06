@@ -32,7 +32,7 @@ router.get(
   validateBody(dateSchema),
 );
 router.get(
-  '/month/:month',
+  '/month/:yearMonth',
   ctrlWrapper(getMonthWaterController),
   validateBody(monthSchema),
 );
