@@ -462,19 +462,26 @@
                       "example": "Water by date found successfully"
                     },
                     "data": {
-                      "type": "object",
-                      "properties": {
-                        "_id": {
-                          "type": "string",
-                          "example": "5f8d0b3b9f9e4b0017f3e4b1"
-                        },
-                        "userId": {
-                          "type": "string",
-                          "example": "5f8d0b3b9f9e4b0017f3e4b1"
-                        },
-                        "drinkedWater": {
-                          "type": "number",
-                          "example": 200
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string",
+                            "example": "5f8d0b3b9f9e4b0017f3e4b1"
+                          },
+                          "userId": {
+                            "type": "string",
+                            "example": "5f8d0b3b9f9e4b0017f3e4b1"
+                          },
+                          "drinkedWater": {
+                            "type": "number",
+                            "example": 200
+                          },
+                          "drinTime": {
+                            "type": "string",
+                            "example": "2021-01-01 00:00"
+                          }
                         }
                       }
                     }
@@ -527,15 +534,26 @@
                   ],
                   "properties": {
                     "data": {
-                      "type": "object",
-                      "properties": {
-                        "month": {
-                          "type": "string",
-                          "example": "2021-12"
-                        },
-                        "water": {
-                          "type": "integer",
-                          "example": 1000
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string",
+                            "example": "5f8d0b3b9f9e4b0017f3e4b1"
+                          },
+                          "userId": {
+                            "type": "string",
+                            "example": "5f8d0b3b9f9e4b0017f3e4b1"
+                          },
+                          "drinkedWater": {
+                            "type": "number",
+                            "example": 200
+                          },
+                          "drinTime": {
+                            "type": "string",
+                            "example": "2021-01-01 00:00"
+                          }
                         }
                       }
                     }
@@ -555,9 +573,9 @@
         "tags": [
           "Water"
         ],
-        "summary": "Update  usedWater by id",
+        "summary": "Update drinkedWater by id",
         "operationId": "updateWater",
-        "description": "Update  usedWater by id",
+        "description": "Update drinkedWater by id",
         "security": [
           {
             "bearerAuth": []
@@ -580,7 +598,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "usedWater": {
+                  "drinkedWater": {
                     "description": "Water volume",
                     "type": "number",
                     "example": 60

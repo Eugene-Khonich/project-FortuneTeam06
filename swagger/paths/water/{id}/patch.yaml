@@ -1,8 +1,8 @@
 tags:
   - Water
-summary: Update  usedWater by id
+summary: Update drinkedWater by id
 operationId: updateWater
-description: 'Update  usedWater by id'
+description: 'Update drinkedWater by id'
 security:
   - bearerAuth: []
 parameters:
@@ -18,7 +18,7 @@ requestBody:
       schema:
         type: object
         properties:
-          usedWater:
+          drinkedWater:
             description: 'Water volume'
             type: number
             example: 60

@@ -22,13 +22,21 @@ responses:
             - data
           properties:
             data:
-              type: object
-              properties:
-                month:
-                  type: string
-                  example: '2021-12'
-                water:
-                  type: integer
-                  example: 1000
+              type: array
+              items:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    example: '5f8d0b3b9f9e4b0017f3e4b1'
+                  userId:
+                    type: string
+                    example: '5f8d0b3b9f9e4b0017f3e4b1'
+                  drinkedWater:
+                    type: number
+                    example: 200
+                  drinTime:
+                    type: string
+                    example: '2021-01-01 00:00'
   '401':
     $ref: '../../../components/responses/401.yaml'
