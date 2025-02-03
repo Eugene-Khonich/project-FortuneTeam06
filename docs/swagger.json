@@ -433,7 +433,7 @@
         "parameters": [
           {
             "in": "query",
-            "name": "data",
+            "name": "date",
             "schema": {
               "pattern": "(/^\\d{4}-\\d{2}-\\d{2}$/)"
             },
