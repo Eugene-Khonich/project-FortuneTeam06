@@ -194,7 +194,7 @@
         }
       }
     },
-    "/users/user-profile": {
+    "/user": {
       "get": {
         "tags": [
           "Users"
