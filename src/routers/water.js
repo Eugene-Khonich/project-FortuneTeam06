@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { validateBody } from '../middlewares/validateBody.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
-import { isValidId } from '../middlewares/isValidId.js';
 import {
   addWaterController,
   deleteWaterController,
@@ -15,24 +14,25 @@ import {
   monthSchema,
   updateWaterSchema,
 } from '../validation/water.js';
+import { authenticate } from '../middlewares/authenticate.js';
 
 const router = Router();
 
+router.use(authenticate);
 router.post('/', ctrlWrapper(addWaterController), validateBody(addWaterSchema));
 router.patch(
   '/:waterId',
-  isValidId,
   ctrlWrapper(updateWaterController),
   validateBody(updateWaterSchema),
 );
-router.delete('/:waterId', ctrlWrapper(deleteWaterController), isValidId);
+router.delete('/:waterId', ctrlWrapper(deleteWaterController));
 router.get(
   '/day/:date',
   ctrlWrapper(getWaterByDateController),
   validateBody(dateSchema),
 );
 router.get(
-  '/month/:month',
+  '/month/:yearMonth',
   ctrlWrapper(getMonthWaterController),
   validateBody(monthSchema),
 );

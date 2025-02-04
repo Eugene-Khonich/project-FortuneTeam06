@@ -1,34 +1,26 @@
 tags:
   - Water
-summary: Get daily water data
-operationId: getWaterByDate
-description: 'Get daily water data for a specific date'
+summary: 'Get water by month'
+operationId: getMonthWater
+description: 'Get user water by month'
 security:
   - bearerAuth: []
 parameters:
   - in: path
-    name: date
+    name: yearMonth
     schema:
-      pattern: '(/^\d{4}-\d{2}-\d{2}$/)'
-    example: 2021-01-01
+      pattern: '(/^\d{4}-\d{2}$/)'
+    example: 2021-12
 responses:
   '200':
-    description: OK
+    description: 'Water by month found successfully'
     content:
       application/json:
         schema:
           type: object
           required:
-            - status
-            - message
             - data
           properties:
-            status:
-              type: integer
-              example: '200'
-            message:
-              type: string
-              example: 'Water by date found successfully'
             data:
               type: array
               items:
@@ -46,8 +38,5 @@ responses:
                   drinTime:
                     type: string
                     example: '2021-01-01 00:00'
-
   '401':
     $ref: '../../../components/responses/401.yaml'
-  '404':
-    $ref: '../../../components/responses/404.yaml'

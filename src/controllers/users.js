@@ -1,6 +1,5 @@
 import createHttpError from 'http-errors';
 import { getUserById, updateUser } from '../services/users.js';
-import { HTTP_STATUSES } from '../constants/index.js';
 import { saveFileToCloudinary } from '../utils/saveFileToCloudinary.js';
 
 export const getUserByIdController = async (req, res, next) => {
@@ -11,8 +10,8 @@ export const getUserByIdController = async (req, res, next) => {
     next(createHttpError.NotFound('User not found'));
   }
 
-  res.status(HTTP_STATUSES.OK).json({
-    status: HTTP_STATUSES.OK,
+  res.status(200).json({
+    status: 200,
     message: `Successfully found user with id ${userId}!`,
     data: user,
   });
@@ -38,7 +37,7 @@ export const patchUserController = async (req, res, next) => {
   }
 
   res.json({
-    status: HTTP_STATUSES.OK,
+    status: 200,
     message: 'Successfully updated user!',
     data: result.user,
   });

@@ -1,7 +1,6 @@
 import createHttpError from 'http-errors';
 import { accessTokenLifetime } from '../constants/users.js';
 import * as authService from '../services/authService.js';
-import SessionCollection from '../db/models/Session.js';
 
 const setupSession = (res, session) => {
   res.cookie('sessionId', session._id, {
@@ -19,10 +18,7 @@ export const registerController = async (req, res) => {
   res.json({
     status: 201,
     message: 'Successfully registered a user',
-    data: {
-      user,
-      accessToken: session.accessToken,
-    },
+    user,
   });
 };
 

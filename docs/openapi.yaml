@@ -7,13 +7,44 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   description: Documentation of Water Trecker app
 tags:
-  - name: Water Trecker
-    description: Water Tracker operations
+  - name: Users
+    description: User operations
   - name: Auth
     description: Auth operations
+  - name: Water
+    description: Water Tracker operations
 servers:
-  - url: https://nodejs-hw-mongodb-final.onrender.com
+  - url: https://water-tracker-x26o.onrender.com
   - url: http://localhost:3000
+paths:
+  /auth/register:
+    post:
+      $ref: ../swagger/paths/auth/register.yaml
+  /auth/login:
+    post:
+      $ref: ../swagger/paths/auth/login.yaml
+  /auth/logout:
+    post:
+      $ref: ../swagger/paths/auth/logout.yaml
+  /user:
+    get:
+      $ref: '../swagger/paths/user/getUser.yaml'
+    patch:
+      $ref: '../swagger/paths/user/patchUser.yaml'
+  /water:
+    post:
+      $ref: ../swagger/paths/water/post.yaml
+  /water/day/{date}:
+    get:
+      $ref: ../swagger/paths/water/daily/get.yaml
+  /water/month/{yearMonth}:
+    get:
+      $ref: ../swagger/paths/water/month/get.yaml
+  /water/{id}:
+    patch:
+      $ref: ../swagger/paths/water/{id}/patch.yaml
+    delete:
+      $ref: ../swagger/paths/water/{id}/delete.yaml
 components:
   securitySchemes:
     bearerAuth:
