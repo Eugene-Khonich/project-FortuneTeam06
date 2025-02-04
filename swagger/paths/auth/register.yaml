@@ -31,12 +31,13 @@ responses:
         schema:
           type: object
           properties:
-            data:
-              type: object
-              properties:
-                user:
-                  $ref: ../../components/schemas/auth.yaml
-                accessToken:
-                  example: qJH3oTiaCe1/iq4dB5qxo5NeKzFR2IxrwXYee8Sm
+            status:
+              type: string
+              example: '201'
+            message:
+              type: string
+              example: 'Successfully registered a user'
+            user:
+              $ref: ../../components/schemas/auth.yaml
   '409':
     $ref: ../../components/responses/409.yaml
