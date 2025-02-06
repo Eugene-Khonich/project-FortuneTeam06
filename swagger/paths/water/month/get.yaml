@@ -21,6 +21,12 @@ responses:
           required:
             - data
           properties:
+            status:
+              type: integer
+              example: '200'
+            message:
+              type: string
+              example: 'Water by month found successfully'
             data:
               type: array
               items:

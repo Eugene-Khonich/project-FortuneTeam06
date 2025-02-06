@@ -32,8 +32,8 @@ responses:
           type: object
           properties:
             status:
-              type: string
-              example: '201'
+              type: integer
+              example: 201
             message:
               type: string
               example: 'Successfully registered a user'
