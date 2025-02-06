@@ -15,7 +15,7 @@ export const registerController = async (req, res) => {
 
   setupSession(res, session);
 
-  res.json({
+  res.status(201).json({
     status: 201,
     message: 'Successfully registered a user',
     user,
@@ -27,7 +27,7 @@ export const loginController = async (req, res) => {
 
   setupSession(res, session);
 
-  res.json({
+  res.status(200).json({
     status: 200,
     message: 'Successfully logged in a user',
     data: {
