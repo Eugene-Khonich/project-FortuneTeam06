@@ -5,22 +5,26 @@ export const addWater = async (payload) => {
   return water;
 };
 
-export const updateWater = async (waterId, userId, payload, options = {}) => {
+export const updateWater = async (
+  waterId,
+  userId,
+  { drinkTime, drinkedWater },
+  options = {},
+) => {
+  const oldWater = await Water.findOne({ _id: waterId, userId });
+  const [drinkDate] = oldWater.drinkTime.split(' ');
+  const updatedDrinkTime = `${drinkDate} ${drinkTime.slice(-5)}`;
+
   const water = await Water.findOneAndUpdate(
     { _id: waterId, userId },
-    payload,
+    { drinkTime: updatedDrinkTime, drinkedWater },
     {
       new: true,
       ...options,
     },
   );
-  if (!water) {
-    return null;
-  }
-  return {
-    data: water,
-    isNew: Boolean(options.upsert && !water._id),
-  };
+
+  return water;
 };
 
 export const deleteWater = async (waterId, userId) => {

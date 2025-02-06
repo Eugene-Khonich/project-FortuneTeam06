@@ -8,10 +8,10 @@ import {
 } from '../services/water.js';
 
 export const addWaterController = async (req, res, next) => {
-  const drinkedWater = req.body.drinkedWater;
+  const { drinkedWater, drinkTime } = req.body;
   const userId = req.user._id;
 
-  const water = await addWater({ userId, drinkedWater });
+  const water = await addWater({ userId, drinkedWater, drinkTime });
   res.status(201).json({
     status: 201,
     message: 'Water added successfully',
@@ -22,8 +22,11 @@ export const addWaterController = async (req, res, next) => {
 export const updateWaterController = async (req, res, next) => {
   const { waterId } = req.params;
   const userId = req.user._id;
-  const drinkedWater = req.body.drinkedWater;
-  const water = await updateWater(waterId, userId, { drinkedWater });
+  const { drinkedWater, drinkTime } = req.body;
+  const water = await updateWater(waterId, userId, {
+    drinkedWater,
+    drinkTime,
+  });
   if (!water) {
     return next(createHttpError(404, 'Water not found'));
   }
