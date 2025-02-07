@@ -739,8 +739,8 @@
           "dailyNorm": {
             "description": "User's daily norm (e.g., step count)",
             "type": "number",
-            "default": 15000,
-            "example": 10000
+            "default": 1500,
+            "example": 1000
           },
           "avatarUrl": {
             "description": "URL to user's avatar",
@@ -791,7 +791,7 @@
           "dailyNorm": {
             "type": "number",
             "description": "User's daily rate of water",
-            "default": 15000
+            "default": 1500
           },
           "photo": {
             "description": "User's photo",
