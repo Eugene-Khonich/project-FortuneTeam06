@@ -29,8 +29,8 @@ properties:
   dailyNorm:
     description: "User's daily norm (e.g., step count)"
     type: number
-    default: 15000
-    example: 10000
+    default: 1500
+    example: 1000
   avatarUrl:
     description: "URL to user's avatar"
     type: string
