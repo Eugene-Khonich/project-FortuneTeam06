@@ -1,7 +1,7 @@
 import createHttpError from 'http-errors';
 import { accessTokenLifetime } from '../constants/users.js';
 import * as authService from '../services/authService.js';
-
+import SessionCollection from '../db/models/Session.js';
 const setupSession = (res, session) => {
   res.cookie('sessionId', session._id, {
     httpOnly: true,
@@ -47,4 +47,26 @@ export const logoutUserController = async (req, res) => {
   res.clearCookie('sessionId');
 
   res.status(204).send();
+};
+
+export const changePasswordController = async (req, res) => {
+  const { oldPassword, newPassword } = req.body;
+  const sessionId = req.cookies.sessionId;
+  if (!sessionId) {
+    throw createHttpError(401, 'Unauthorized');
+  }
+
+  const session = await SessionCollection.findById(sessionId);
+
+  if (!session) {
+    throw createHttpError(401, 'Invalid session');
+  }
+
+  if (!oldPassword || !newPassword) {
+    throw createHttpError(400, 'Old and new password are required');
+  }
+
+  await authService.changePassword(session.userId, oldPassword, newPassword);
+
+  res.status(200).json({ status: 200, message: 'Password changed!', data: {} });
 };
