@@ -19,22 +19,22 @@ import { authenticate } from '../middlewares/authenticate.js';
 const router = Router();
 
 router.use(authenticate);
-router.post('/', ctrlWrapper(addWaterController), validateBody(addWaterSchema));
+router.post('/', validateBody(addWaterSchema), ctrlWrapper(addWaterController));
 router.patch(
   '/:waterId',
-  ctrlWrapper(updateWaterController),
   validateBody(updateWaterSchema),
+  ctrlWrapper(updateWaterController),
 );
 router.delete('/:waterId', ctrlWrapper(deleteWaterController));
 router.get(
   '/day/:date',
-  ctrlWrapper(getWaterByDateController),
   validateBody(dateSchema),
+  ctrlWrapper(getWaterByDateController),
 );
 router.get(
   '/month/:yearMonth',
-  ctrlWrapper(getMonthWaterController),
   validateBody(monthSchema),
+  ctrlWrapper(getMonthWaterController),
 );
 
 export default router;
