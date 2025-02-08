@@ -10,7 +10,7 @@ export const addWaterSchema = Joi.object({
 
   drinkTime: Joi.string()
     .required()
-    .pattern(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/)
+    .pattern(/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/)
     .messages({
       'string.base': 'Must be a string',
       'string.pattern.base': 'Must be in the format YYYY-MM-DD HH:mm',
@@ -26,10 +26,10 @@ export const updateWaterSchema = Joi.object({
   }),
 
   drinkTime: Joi.string()
-    .pattern(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/)
+    .pattern(/^\d{2}:\d{2}$/)
     .messages({
       'string.base': 'Must be a string',
-      'string.pattern.base': 'Must be in the format YYYY-MM-DD HH:mm',
+      'string.pattern.base': 'Must be in the format HH:mm',
     }),
 });
 
