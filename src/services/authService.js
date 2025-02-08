@@ -53,3 +53,20 @@ export const loginUser = async ({ email, password }) => {
 export const logoutUser = async (sessionId) => {
   await SessionCollection.deleteOne({ _id: sessionId });
 };
+
+export const changePassword = async (userId, oldPassword, newPassword) => {
+  const user = await UserCollection.findById(userId);
+
+  if (!user) {
+    throw createHttpError(404, 'User not found!');
+  }
+
+  const isMatch = await bcrypt.compare(oldPassword, user.password);
+  if (!isMatch) {
+    throw createHttpError(401, 'Old password is incorrect!');
+  }
+
+  user.password = await bcrypt.hash(newPassword, 10);
+
+  await user.save();
+};
