@@ -1,7 +1,6 @@
 type: object
 required:
   - email
-  - password
   - name
 properties:
   _id:
@@ -16,10 +15,6 @@ properties:
     description: "User's email"
     type: string
     example: 'example@example.com'
-  password:
-    description: "User's password"
-    type: string
-    example: '12345678'
   gender:
     description: "User's gender"
     type: string
