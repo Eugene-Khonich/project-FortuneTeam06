@@ -49,7 +49,7 @@ responses:
                     photo:
                       type: string
                       format: uri
-                      description: URL of the user's photo photo
+                      description: URL of the user's photo
                       example: https://res.cloudinary.com/photo/image.png
   '401':
     $ref: '../../components/responses/401.yaml'
