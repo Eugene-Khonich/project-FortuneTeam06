@@ -395,7 +395,7 @@
                   "dailyNorm": {
                     "type": "number",
                     "description": "User's daily rate of water",
-                    "default": 15000
+                    "default": 1500
                   }
                 }
               }

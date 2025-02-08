@@ -32,7 +32,7 @@ requestBody:
           dailyNorm:
             type: number
             description: User's daily rate of water
-            default: 15000
+            default: 1500
 responses:
   '200':
     description: User profile updated successfully
