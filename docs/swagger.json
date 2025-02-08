@@ -332,7 +332,7 @@
                             "photo": {
                               "type": "string",
                               "format": "uri",
-                              "description": "URL of the user's photo photo",
+                              "description": "URL of the user's photo",
                               "example": "https://res.cloudinary.com/photo/image.png"
                             }
                           }
@@ -369,7 +369,35 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "type": "object"
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "User's full name",
+                    "example": "John Doe"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User's email address",
+                    "example": "example@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "User's password",
+                    "example": "12345678"
+                  },
+                  "gender": {
+                    "type": "string",
+                    "description": "User's gender",
+                    "example": "female"
+                  },
+                  "dailyNorm": {
+                    "type": "number",
+                    "description": "User's daily rate of water",
+                    "default": 15000
+                  }
+                }
               }
             }
           }
@@ -378,28 +406,28 @@
           "200": {
             "description": "User profile updated successfully",
             "content": {
-              "multipart/form-data": {
+              "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
                   "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
                     "message": {
                       "type": "string",
-                      "example": "Successfully patched a user"
+                      "example": "User profile updated successfully"
                     },
-                    "data": {
+                    "user": {
                       "type": "object",
                       "properties": {
-                        "user": {
-                          "$ref": "#/components/schemas/user"
+                        "name": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "gender": {
+                          "type": "string"
+                        },
+                        "dailyNorm": {
+                          "type": "number"
                         }
                       }
                     }
@@ -821,56 +849,6 @@
             "type": "string",
             "format": "uri",
             "example": "https://example.com/avatar.jpg"
-          }
-        }
-      },
-      "user": {
-        "type": "object",
-        "required": [
-          "email",
-          "password",
-          "name"
-        ],
-        "properties": {
-          "_id": {
-            "description": "User's id",
-            "type": "string",
-            "example": "669ba5cc4b0321e6c93ae9e0"
-          },
-          "name": {
-            "description": "User's name",
-            "type": "string",
-            "example": "John Doe"
-          },
-          "email": {
-            "description": "User's email",
-            "type": "string",
-            "example": "example@example.com"
-          },
-          "password": {
-            "description": "User's password",
-            "type": "string",
-            "example": "12345678"
-          },
-          "gender": {
-            "description": "User's gender",
-            "type": "string",
-            "default": "female",
-            "enum": [
-              "male",
-              "female"
-            ],
-            "example": "female"
-          },
-          "dailyNorm": {
-            "type": "number",
-            "description": "User's daily rate of water",
-            "default": 1500
-          },
-          "photo": {
-            "description": "User's photo",
-            "type": "string",
-            "example": "https://res.cloudinary.com/photo/image.png"
           }
         }
       },
