@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { validateBody, validateParams } from '../middlewares/validateBody.js';
+import { validateBody } from '../middlewares/validateBody.js';
+import { validateParams } from '../middlewares/validateParams.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import {
   addWaterController,
