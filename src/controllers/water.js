@@ -49,8 +49,13 @@ export const deleteWaterController = async (req, res, next) => {
 };
 
 export const getWaterByDateController = async (req, res, next) => {
+  console.log('Отримані params:', req.params); // 🛑 Додай цей лог
+  console.log('req.params.date:', req.params.date); // 🛑 Додай цей лог
   const userId = req.user._id;
   const { date } = req.params;
+  if (!date) {
+    return next(createHttpError(400, 'Date is required in params'));
+  }
   const water = await getWaterByDate(date, userId);
   if (!water) {
     return next(createHttpError(404, `Water by date ${date} not found`));
