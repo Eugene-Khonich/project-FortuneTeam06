@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { validateBody } from '../middlewares/validateBody.js';
+import { validateBody, validateParams } from '../middlewares/validateBody.js';
 import { ctrlWrapper } from '../utils/ctrlWrapper.js';
 import {
   addWaterController,
@@ -28,12 +28,12 @@ router.patch(
 router.delete('/:waterId', ctrlWrapper(deleteWaterController));
 router.get(
   '/day/:date',
-  validateBody(dateSchema),
+  validateParams(dateSchema),
   ctrlWrapper(getWaterByDateController),
 );
 router.get(
   '/month/:yearMonth',
-  validateBody(monthSchema),
+  validateParams(monthSchema),
   ctrlWrapper(getMonthWaterController),
 );
 
