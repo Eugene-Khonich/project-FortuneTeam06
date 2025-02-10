@@ -60,7 +60,7 @@ export const changePassword = async (userId, oldPassword, newPassword) => {
   if (!user) {
     throw createHttpError(404, 'User not found!');
   }
-
+  console.log('Старий пароль користувача (хеш):', user.password);
   const isMatch = await bcrypt.compare(oldPassword, user.password);
   if (!isMatch) {
     throw createHttpError(401, 'Old password is incorrect!');
@@ -69,4 +69,7 @@ export const changePassword = async (userId, oldPassword, newPassword) => {
   user.password = await bcrypt.hash(newPassword, 10);
 
   await user.save();
+  console.log('Новий пароль користувача (хеш):', user.password);
+  const updatedUser = await UserCollection.findById(userId);
+  console.log('Оновлений пароль в базі:', updatedUser.password);
 };

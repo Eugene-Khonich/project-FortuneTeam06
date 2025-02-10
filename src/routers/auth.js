@@ -23,7 +23,7 @@ authRouter.post(
 );
 authRouter.post('/logout', ctrlWrapper(authController.logoutUserController));
 
-authRouter.post(
+authRouter.patch(
   '/change-password',
   validateBody(changePasswordSchema),
   ctrlWrapper(authController.changePasswordController),

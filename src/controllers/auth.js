@@ -53,7 +53,7 @@ export const logoutUserController = async (req, res) => {
 export const changePasswordController = async (req, res) => {
   const { oldPassword, newPassword } = req.body;
   const sessionId = req.cookies.sessionId;
-
+  console.log('Отримані дані:', { oldPassword, newPassword, sessionId });
   if (!sessionId) {
     throw createHttpError(401, 'Unauthorized');
   }
