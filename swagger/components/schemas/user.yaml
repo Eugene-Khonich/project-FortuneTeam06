@@ -24,7 +24,6 @@ properties:
   dailyNorm:
     type: number
     description: "User's daily rate of water"
-    default: 1500
   photo:
     description: "User's photo"
     type: string

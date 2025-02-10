@@ -195,7 +195,7 @@
       }
     },
     "/auth/change-password": {
-      "post": {
+      "patch": {
         "tags": [
           "Auth"
         ],
@@ -841,7 +841,6 @@
           "dailyNorm": {
             "description": "User's daily norm (e.g., step count)",
             "type": "number",
-            "default": 1500,
             "example": 1000
           },
           "avatarUrl": {

@@ -27,7 +27,7 @@ paths:
     post:
       $ref: ../swagger/paths/auth/logout.yaml
   /auth/change-password:
-    post:
+    patch:
       $ref: ../swagger/paths/auth/change-password.yaml
   /user:
     get:
