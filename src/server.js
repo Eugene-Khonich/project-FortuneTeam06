@@ -18,7 +18,10 @@ export const setupServer = () => {
   });
   app.use(
     cors({
-      origin: 'https://water-tracker-sand.vercel.app',
+      origin: [
+        'https://water-tracker-sand.vercel.app',
+        'http://localhost:5173',
+      ],
       credentials: true,
     }),
   );
