@@ -16,7 +16,12 @@ export const setupServer = () => {
     console.log(`Incoming request: ${req.method} ${req.url}`);
     next();
   });
-  app.use(cors());
+  app.use(
+    cors({
+      origin: 'https://water-tracker-sand.vercel.app',
+      credentials: true,
+    }),
+  );
   app.use(cookieParser());
   app.use(express.json());
   app.use(

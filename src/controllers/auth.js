@@ -7,6 +7,7 @@ const setupSession = (res, session) => {
     httpOnly: true,
     expires: new Date(Date.now() + accessTokenLifetime),
   });
+  console.log('🔹 Cookie встановлена:', res.getHeaders()['set-cookie']);
 };
 
 export const registerController = async (req, res) => {
@@ -52,6 +53,7 @@ export const logoutUserController = async (req, res) => {
 export const changePasswordController = async (req, res) => {
   const { oldPassword, newPassword } = req.body;
   const sessionId = req.cookies.sessionId;
+
   if (!sessionId) {
     throw createHttpError(401, 'Unauthorized');
   }
