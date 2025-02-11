@@ -42,7 +42,7 @@ export const authenticate = async (req, res, next) => {
     }
 
     req.user = user;
-
+    console.log('Authenticated User:', req.user);
     next();
   } catch (error) {
     next(error);
