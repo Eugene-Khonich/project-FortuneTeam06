@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import pino from 'pino-http';
-import cookieParser from 'cookie-parser';
+// import cookieParser from 'cookie-parser';
 
 import { getEnv } from './utils/getEnv.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
@@ -25,7 +25,7 @@ export const setupServer = () => {
       credentials: true,
     }),
   );
-  app.use(cookieParser());
+  // app.use(cookieParser());
   app.use(express.json());
   app.use(
     pino({
