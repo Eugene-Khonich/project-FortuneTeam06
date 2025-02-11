@@ -2,10 +2,13 @@ import createHttpError from 'http-errors';
 import { accessTokenLifetime } from '../constants/users.js';
 import * as authService from '../services/authService.js';
 import SessionCollection from '../db/models/Session.js';
+
+const isSecure =
+  process.env.NODE_ENV === 'production' || req.protocol === 'https';
 const setupSession = (res, session) => {
   res.cookie('sessionId', session._id, {
     httpOnly: true,
-    secure: true,
+    secure: isSecure,
     sameSite: 'None',
     path: '/',
     expires: new Date(Date.now() + accessTokenLifetime),
