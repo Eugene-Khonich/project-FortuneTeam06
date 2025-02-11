@@ -5,6 +5,9 @@ import SessionCollection from '../db/models/Session.js';
 const setupSession = (res, session) => {
   res.cookie('sessionId', session._id, {
     httpOnly: true,
+    secure: true,
+    sameSite: 'None',
+    path: '/',
     expires: new Date(Date.now() + accessTokenLifetime),
   });
   console.log('🔹 Cookie встановлена:', res.getHeaders()['set-cookie']);
