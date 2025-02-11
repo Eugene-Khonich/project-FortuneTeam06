@@ -17,13 +17,7 @@ export const authenticate = async (req, res, next) => {
 
   try {
     const session = await Session.findOne({ accessToken: token });
-    console.log('SESSION:', session);
-    console.log('Token expires at:', session.accessTokenValidUntil);
-    console.log('Current time:', new Date());
-    console.log(
-      'Token expired:',
-      new Date() > new Date(session.accessTokenValidUntil),
-    );
+
     if (!session) {
       return next(createHttpError(404, 'Session not found'));
     }
@@ -42,7 +36,7 @@ export const authenticate = async (req, res, next) => {
     }
 
     req.user = user;
-    console.log('Authenticated User:', req.user);
+
     next();
   } catch (error) {
     next(error);
