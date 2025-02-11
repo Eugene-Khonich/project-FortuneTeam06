@@ -61,12 +61,12 @@ export const logoutUserController = async (req, res) => {
 export const changePasswordController = async (req, res) => {
   const { oldPassword, newPassword, sessionId } = req.body;
   // const sessionId = req.body.sessionId;
-
+  console.log('SESSION ID!!!!!!!!!!!!', sessionId);
   if (!sessionId) {
     throw createHttpError(401, 'Unauthorized');
   }
 
-  const session = await SessionCollection.findById(sessionId);
+  const session = await SessionCollection.findOne({ _id: sessionId });
 
   if (!session) {
     throw createHttpError(401, 'Invalid session');
