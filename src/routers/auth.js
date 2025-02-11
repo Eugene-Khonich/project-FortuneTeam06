@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import * as authController from '../controllers/auth.js';
 import { validateBody } from './../middlewares/validateBody.js';
-import { authenticate } from '../middlewares/authenticate.js';
 import { ctrlWrapper } from './../utils/ctrlWrapper.js';
 import {
   loginUserSchema,
@@ -26,7 +25,6 @@ authRouter.post('/logout', ctrlWrapper(authController.logoutUserController));
 
 authRouter.patch(
   '/change-password',
-  authenticate,
   validateBody(changePasswordSchema),
   ctrlWrapper(authController.changePasswordController),
 );
