@@ -3,24 +3,30 @@ import { accessTokenLifetime } from '../constants/users.js';
 import * as authService from '../services/authService.js';
 import SessionCollection from '../db/models/Session.js';
 
-const isSecure =
-  process.env.NODE_ENV === 'production' || req.protocol === 'https';
-const setupSession = (res, session) => {
+// const isSecure =
+//   process.env.NODE_ENV === 'production' || req.protocol === 'https';
+// const setupSession = (req, res, session) => {
+//   res.cookie('sessionId', session._id, {
+//     httpOnly: true,
+//     secure: process.env.NODE_ENV === 'production' || req.protocol === 'https',
+//     sameSite: 'None',
+//     path: '/',
+//     expires: new Date(Date.now() + accessTokenLifetime),
+//   });
+//   console.log('🔹 Cookie встановлена:', res.getHeaders()['set-cookie']);
+// };
+
+export const registerController = async (req, res) => {
+  const user = await authService.registerUser(req.body);
+  const session = await authService.loginUser(req.body);
   res.cookie('sessionId', session._id, {
     httpOnly: true,
-    secure: isSecure,
+    secure: process.env.NODE_ENV === 'production' || req.protocol === 'https',
     sameSite: 'None',
     path: '/',
     expires: new Date(Date.now() + accessTokenLifetime),
   });
   console.log('🔹 Cookie встановлена:', res.getHeaders()['set-cookie']);
-};
-
-export const registerController = async (req, res) => {
-  const user = await authService.registerUser(req.body);
-  const session = await authService.loginUser(req.body);
-
-  setupSession(res, session);
 
   res.status(201).json({
     status: 201,
@@ -31,8 +37,14 @@ export const registerController = async (req, res) => {
 
 export const loginController = async (req, res) => {
   const session = await authService.loginUser(req.body);
-
-  setupSession(res, session);
+  res.cookie('sessionId', session._id, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production' || req.protocol === 'https',
+    sameSite: 'None',
+    path: '/',
+    expires: new Date(Date.now() + accessTokenLifetime),
+  });
+  console.log('🔹 Cookie встановлена:', res.getHeaders()['set-cookie']);
 
   res.status(200).json({
     status: 200,
